@@ -1,0 +1,165 @@
+%
+% Modified: Stuart Wakefield for Imperial theses
+%
+% 18 July 2000
+%
+% this style file has:
+%
+% - regulation page layout for UCL
+%
+% - regulation title page with relevant text for ICRF/UCL
+%   with following variables
+%         \title 
+%         \author 
+%         \submitdate 
+
+% --------------------------------------------------------------
+
+% Page Layout
+
+\usepackage[left=40mm,top=35mm,right=20mm,bottom=20mm,headheight=10mm,headsep=10mm,footskip=0mm]{geometry}
+
+% one and a half spacing for 12pt (page 53 of LateX companion)
+\renewcommand{\baselinestretch}{1.24}
+
+% ---------------------
+
+% Headers ( and footers for the drafts )
+
+\usepackage{fancyhdr}
+
+% clock function (page 469 of LateX companion)
+\usepackage{calc}
+\newcounter{hours}
+\newcounter{minutes}
+\newcommand{\printtime}{%
+  \setcounter{hours}{\time/60}%
+  \setcounter{minutes}{\time-\value{hours}*60}%
+  \thehours :\theminutes h}
+
+\fancypagestyle{plain}{%
+% clear all headers/footers
+\fancyhf{}%
+% headers
+\fancyhead[R]{\bfseries\thepage}%
+\fancyhead[L]{\bfseries\textsc\leftmark}%
+% footers FOR DRAFTS ONLY
+% \fancyfoot[L]{\bfseries{Gidon Moont thesis draft}}%
+% \fancyfoot[R]{\bfseries{\today\ \ \printtime}}%
+% \fancyfoot[L]{\bfseries{Gidon Moont}}%
+% \fancyfoot[R]{\bfseries{thesis DRAFT \#3\ (\today)}}%
+}
+
+\pagestyle{plain}
+
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+
+%\def\plainheadrulewidth{0.4pt}
+
+% --------------------------------------------------------------
+
+\def\bibtitle{References}
+\def\bibheadtitle{References}
+\def\contentsname{Contents}
+\def\listfigurename{List of Figures}
+\def\listtablename{List of Tables}
+
+% --------------------------------------------------------------
+
+\def\thebibliography#1{\chapter*{\bibtitle\@mkboth
+  {\bibheadtitle}{\bibheadtitle}}
+  \addcontentsline{toc}{chapter}{\bibtitle}\list
+  {[\arabic{enumi}]}{\settowidth\labelwidth{[#1]}\leftmargin\labelwidth
+  \advance\leftmargin\labelsep
+  \usecounter{enumi}}
+  \def\newblock{\hskip .11em plus .33em minus .07em}
+  \sloppy\clubpenalty4000\widowpenalty4000
+  \sfcode`\.=1000\relax}
+\let\endthebibliography=\endlist
+
+% --------------------------------------------------------------
+
+% title page - problem with initial line (?)
+% hack solution - newpage and restart page numbering
+% this causes a warning on compilation about page references
+
+\def\submitdate#1{\gdef\@submitdate{#1}}
+
+\renewcommand\maketitle{
+\newpage
+\setcounter{page}{1}
+\begin{centering}
+
+{\Huge\bf\@title}
+
+\vspace*{\stretch{1}}
+
+{\huge\@author}
+%\textsc\@author}
+
+{\Large Imperial College London }
+
+%\vspace*{\stretch{1}}
+
+{\large\textsc\@submitdate}
+
+\vspace*{\stretch{1}}
+
+
+
+%Biomolecular Modelling Laboratory
+%\linebreak
+%Cancer Research UK
+%\linebreak
+%London Research Institute
+%\linebreak
+%44 Lincoln's Inn Fields, London, WC2A 3PX
+%\linebreak
+%\linebreak
+%and
+%\linebreak
+%\linebreak
+%Department of Biochemistry and Molecular Biology
+%\linebreak
+%University College London
+%\linebreak
+%Gower Street, London, WC2E 6BT
+%}
+
+\vspace*{\stretch{1}}
+
+A Thesis submitted for the degree of
+\linebreak
+Doctor of Philosophy at the University of London
+\linebreak
+and for the
+\linebreak
+Diploma of Imperial College
+
+\end{centering}
+
+}
+
+% --------------------------------------------------------------
+
+\def\contentsname{Contents}
+\def\tableofcontents{\@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn
+ \fi\chapter*{\vspace{-4.3\bigskipamount}\contentsname
+  \@mkboth{\uppercase{\contentsname}}{\uppercase{\contentsname}}}
+ {\@starttoc{toc}}\if@restonecol\twocolumn\fi}
+
+\def\listfigurename{List of Figures}
+\def\listoffigures{\@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn
+ \fi\chapter*{\vspace{-4.3\bigskipamount}\listfigurename\@mkboth
+ {\uppercase{\listfigurename}}{\uppercase{\listfigurename}}}
+ {\vspace{-\bigskipamount}\@starttoc{lof}}\if@restonecol
+ \twocolumn\fi}
+\def\l@figure{\par\addvspace{\bigskipamount}\pagebreak[2]
+ \@dottedtocline{1}{1.5em}{2.3em}}
+\def\listtablename{List of Tables}
+\def\listoftables{\@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn
+ \fi\chapter*{\vspace{-4.3\bigskipamount}\listtablename\@mkboth
+ {\uppercase{\listtablename}}{\uppercase{\listtablename}}}
+ {\vspace{-\bigskipamount}\@starttoc{lot}}\if@restonecol
+ \twocolumn\fi}
+\let\l@table\l@figure

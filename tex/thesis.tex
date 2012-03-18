@@ -1,0 +1,151 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  Stuart Wakefield Thesis
+%
+%                                         S. Wakefield
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Preamble stuff
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[11pt,a4paper,pdftex]{report}
+\author{Stuart L. Wakefield}
+\title{Distributed data analysis over the grid and a study of the decay MSSM A/H $\rightarrow$ tau tau $\rightarrow$ two jets at CMS}
+%\department{Physics}
+%\division{Physical Sciences}
+%\degree{Doctor of Philosophy}
+%\date{November 2006}
+
+%	Packages needed
+\usepackage{ucl_thesis}
+\usepackage[pdftex]{color,graphicx,graphics}	% get pdf
+\usepackage[bookmarksnumbered,bookmarksopen,bookmarksopenlevel=1,colorlinks,linkcolor=magenta,citecolor=blue,urlcolor=red,bookmarks=true]{hyperref}	% handle links
+\usepackage{cite}%
+\usepackage{fancyhdr}		% this is a modern version of fancyheadings
+\usepackage{setspace}		% get line spacing
+\usepackage{lscape} 		% to allow landscape pages for figures and tables
+\usepackage{ifpdf}			% find out if creating pdf
+\usepackage{xspace} 		% package to strip/add spaces after commands
+\usepackage{amssymb}		% to get ams symbols
+\usepackage{amsmath}		% for binomial symbols
+\usepackage{rotating}		% provide table rotations
+
+
+\submitdate{2007}
+
+% look for pictures
+\DeclareGraphicsExtensions{.pdf,.jpg,.jpeg,.png,.ps}
+
+%PDF doucument info - not sure if needed/wanted
+%\ifpdf % only run if in pdflatex
+\pdfinfo{
+  /Author (Stuart Wakefield)
+  /Title  (Distributed data analysis over the grid and a study of the decay MSSM A/H -> tau tau -> two jets at CMS)
+%   /Subject (PDFLaTeX)
+%   /Keywords (PDF;LaTeX)
+}
+%\fi
+
+
+%%%%%
+% Definitions
+%%%%%
+
+\input{definitions}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Title page stuff
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\bibliographystyle{lucas_unsrt}
+\thispagestyle{empty}
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Abstract, declaration and acknowledgement 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\begin{center}
+{\bf Declaration}
+\end{center}
+\input{conjoint_work}
+
+\newpage
+\begin{center}
+{\bf Abstract}
+\end{center}
+\input{abstract}
+
+\newpage
+\begin{center}
+{\bf Acknowledgements}
+\end{center}
+\input{acknowledgements}
+
+\newpage
+\begin{center}
+{\bf Preface}
+\end{center}
+\input{introduction}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Contents and figures and tables
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\cleardoublepage
+\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  The main text
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Introduction
+%\input{introduction}
+
+% detector chapter
+\input{cms}
+
+% Grid chapter
+\input{grid}
+
+% CMS computing model chapter text
+\input{cms_computing_model}
+
+% GROSS chapter text
+\input{gross}
+
+% BOSS v4 section
+\input{boss}
+
+% theory chapter
+\input{theory}
+
+%Tau calibration chapter
+\input{tau}
+
+%Analysis chapter
+\input{analysis}
+
+%Conclusion
+\input{conclusion}
+
+\singlespacing
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Appendices
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\appendix
+%\cleardoublepage
+
+\input{acronyms}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Bibliography etc...
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliography{thesis}
+%\thebibliography{swakefield}
+\end{document}
